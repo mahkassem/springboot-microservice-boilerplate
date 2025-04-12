@@ -1,13 +1,10 @@
 package com.aenesgur.productservice.event;
 
 import com.aenesgur.productservice.model.dto.ProductEventModel;
-import com.aenesgur.productservice.model.dto.ProductRequestDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 

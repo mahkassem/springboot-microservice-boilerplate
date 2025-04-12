@@ -24,7 +24,8 @@ public class OrderController {
         return new ResponseEntity("Order created succesfully.", HttpStatus.CREATED);
     }
 
-    public ResponseEntity<String> productStockFallbackMethod(OrderDto orderDto, RuntimeException exception){
-        return  new ResponseEntity<>("Something went wrong for this operation. Please try later...", HttpStatus.SERVICE_UNAVAILABLE);
+    public ResponseEntity<String> productStockFallbackMethod(OrderDto orderDto, RuntimeException exception) {
+        return new ResponseEntity<>("Something went wrong for this operation. Please try later...",
+                HttpStatus.SERVICE_UNAVAILABLE);
     }
 }

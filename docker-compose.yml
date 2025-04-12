@@ -1,9 +1,7 @@
-version: '3'
 services:
 
   ### Services ###
   discovery-server:
-    image: 'aenesgur/ms-ex/discovery-server-image'
     container_name: discovery-server
     build:
       context: ./discovery-server/
@@ -11,7 +9,6 @@ services:
       - "8761:8761"
 
   api-gateway:
-    image: 'aenesgur/ms-ex/api-gateway-image'
     container_name: api-gateway
     build:
       context: ./api-gateway/
@@ -26,7 +23,6 @@ services:
 
   product-service:
     container_name: product-service
-    image: 'aenesgur/ms-ex/product-service-image'
     build:
       context: ./product-service/
     ports:
@@ -46,7 +42,6 @@ services:
       - kafka
 
   order-service:
-    image: 'aenesgur/ms-ex/order-service-image'
     container_name: order-service
     build:
       context: ./order-service/
@@ -68,7 +63,6 @@ services:
       - kafka
 
   product-stock-service:
-    image: 'aenesgur/ms-ex/product-stock-service'
     container_name: product-stock-service
     build:
       context: ./product-stock-service/
@@ -89,7 +83,6 @@ services:
       - kafka
 
   send-sms-service:
-    image: 'aenesgur/ms-ex/send-sms-service'
     container_name: send-sms-service
     build:
       context: ./send-sms-service/
@@ -108,7 +101,7 @@ services:
   ### Dependencies ###
   postgres-productservice:
     container_name: postgres-productservice
-    image: postgres
+    image: postgres:16
     environment:
       POSTGRES_DB: product-service
       POSTGRES_USER: productservice-user
@@ -125,7 +118,7 @@ services:
 
   mysql-orderservice:
     container_name: mysql-orderservice
-    image: mysql
+    image: mysql:8
     restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=123456
@@ -148,6 +141,7 @@ services:
 
   kafka:
     image: obsidiandynamics/kafka
+    platform: linux/amd64
     container_name: kafka
     restart: "no"
     ports:
